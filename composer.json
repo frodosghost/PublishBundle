@@ -1,0 +1,25 @@
+{
+    "name": "manhattan/publish-bundle",
+    "description": "A Symfony 2 bundle for adding Publish fields to entities.",
+    "type": "symfony-bundle",
+    "keywords": ["saving", "search"],
+    "homepage": "https://github.com/frodosghost/PublishBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "James Rickard",
+            "email": "james@frodosghost.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "doctrine/common": "~2.2"
+    },
+    "target-dir": "Manhattan/PublishBundle",
+    "autoload": {
+        "psr-0": {
+            "Manhattan\\PublishBundle": ""
+        }
+    },
+    "version": "dev-master"
+}

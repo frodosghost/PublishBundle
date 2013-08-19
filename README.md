@@ -1,4 +1,4 @@
 PublishBundle
 =============
 
-Add Publish ability.
+Add Publish operations to entities within the Manhattan Console.
