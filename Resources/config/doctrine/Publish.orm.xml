@@ -30,11 +30,6 @@
             </cascade>
         </many-to-one>
 
-        <!--lifecycle-callbacks>
-            <lifecycle-callback type="prePersist" method="prePersist" />
-            <lifecycle-callback type="preUpdate" method="preUpdate" />
-        </lifecycle-callbacks-->
-
     </mapped-superclass>
 
 </doctrine-mapping>

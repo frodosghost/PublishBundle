@@ -49,6 +49,7 @@ class ObjectPersistSubscriber implements EventSubscriber
         if ($entity instanceof Publish) {
             if ($this->getSecurityToken() && $this->getSecurityToken()->getUser() instanceof User) {
                 $entity->setCreatedBy($this->getSecurityToken()->getUser());
+                $entity->setUpdatedBy($this->getSecurityToken()->getUser());
             }
 
             $entity->setCreatedAt(new \DateTime());
