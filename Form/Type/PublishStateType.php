@@ -20,10 +20,6 @@ class PublishStateType extends AbstractType
 
     public function __construct(array $publishStateChoices)
     {
-        echo '<pre>';
-        print_r($publishStateChoices);
-        echo '</pre>';
-        exit;
         $this->publishStateChoices = $publishStateChoices;
     }
 
