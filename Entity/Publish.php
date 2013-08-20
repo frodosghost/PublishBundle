@@ -11,6 +11,8 @@
 
 namespace Manhattan\PublishBundle\Entity;
 
+use Manhattan\Bundle\ConsoleBundle\Entity\User;
+
 /**
  * Manhattan\PublishBundle\Entity\Publish
  *
@@ -30,6 +32,11 @@ abstract class Publish
     const ARCHIVE = 4;
 
     const LOCKED = 8;
+
+    /**
+     * @var FOS\UserBundle\Model\User
+     */
+    protected $user;
 
     /**
      * @var integer
@@ -57,6 +64,29 @@ abstract class Publish
     public function __construct()
     {
         $this->publishState = 1;
+    }
+
+    /**
+     * Set user
+     *
+     * @param  FOS\UserBundle\Model\User $user
+     * @return Publish
+     */
+    public function setUser(User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \DateTime
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 
     /**

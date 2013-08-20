@@ -14,6 +14,10 @@
 
         <field name="updatedAt" column="updated_at" type="datetime" />
 
+        <many-to-one field="user" target-entity="Manhattan\Bundle\ConsoleBundle\Entity\User">
+            <join-column name="user_id" referenced-column-name="id" />
+        </many-to-one>
+
         <lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="prePersist" />
             <lifecycle-callback type="preUpdate" method="preUpdate" />
