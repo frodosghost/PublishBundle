@@ -9,13 +9,20 @@
         <parameter key="manhattan.constant.publish" type="constant">Manhattan\PublishBundle\Entity\Publish::PUBLISH</parameter>
         <parameter key="manhattan.constant.archive" type="constant">Manhattan\PublishBundle\Entity\Publish::ARCHIVE</parameter>
         <parameter key="manhattan.constant.locked" type="constant">Manhattan\PublishBundle\Entity\Publish::LOCKED</parameter>
+
         <parameter key="manhattan.publish.state.type">Manhattan\PublishBundle\Form\Type\PublishStateType</parameter>
+        <parameter key="manhattan.publish.persist.subscriber.class">Manhattan\PublishBundle\EventListener\ObjectPersistSubscriber</parameter>
     </parameters>
 
     <services>
         <service id="form.type.publish_state" class="%manhattan.publish.state.type%">
             <argument>%manhattan.publish.states%</argument>
             <tag name="form.type" alias="publish_state" />
+        </service>
+
+        <service id="manhattan.publish.persist.subscriber" class="%manhattan.publish.persist.subscriber.class%">
+            <argument type="service" id="service_container" />
+            <tag name="doctrine.event_subscriber" connection="default" />
         </service>
 
     </services>

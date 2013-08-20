@@ -34,11 +34,6 @@ abstract class Publish
     const LOCKED = 8;
 
     /**
-     * @var FOS\UserBundle\Model\User
-     */
-    protected $user;
-
-    /**
      * @var integer
      */
     protected $publishState;
@@ -49,9 +44,19 @@ abstract class Publish
     protected $publishDate;
 
     /**
+     * @var Manhattan\Bundle\ConsoleBundle\Entity\User
+     */
+    protected $createdBy;
+
+    /**
      * @var \DateTime
      */
     protected $createdAt;
+
+    /**
+     * @var Manhattan\Bundle\ConsoleBundle\Entity\User
+     */
+    protected $updatedBy;
 
     /**
      * @var \DateTime
@@ -63,31 +68,9 @@ abstract class Publish
      */
     public function __construct()
     {
-        $this->publishState = 1;
+        $this->publishState = self::DRAFT;
     }
 
-    /**
-     * Set user
-     *
-     * @param  FOS\UserBundle\Model\User $user
-     * @return Publish
-     */
-    public function setUser(User $user)
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \DateTime
-     */
-    public function getUser()
-    {
-        return $this->user;
-    }
 
     /**
      * Set setPublishDate
@@ -148,12 +131,35 @@ abstract class Publish
     }
 
     /**
+     * Set createdBy
+     *
+     * @param  Manhattan\Bundle\ConsoleBundle\Entity\User $createdBy
+     * @return Publish
+     */
+    public function setCreatedBy(User $createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return Manhattan\Bundle\ConsoleBundle\Entity\User
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
      * Set createdAt
      *
      * @param datetime $createdAt
      * @return Post
      */
-    public function setCreatedAt($createdAt)
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
         return $this;
@@ -162,11 +168,34 @@ abstract class Publish
     /**
      * Get createdAt
      *
-     * @return datetime
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
         return $this->createdAt;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param  Manhattan\Bundle\ConsoleBundle\Entity\User $updatedBy
+     * @return Publish
+     */
+    public function setUpdatedBy(User $updatedBy)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return Manhattan\Bundle\ConsoleBundle\Entity\User
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
     }
 
     /**
@@ -175,16 +204,17 @@ abstract class Publish
      * @param datetime $updatedAt
      * @return Post
      */
-    public function setUpdatedAt($updatedAt)
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
+
         return $this;
     }
 
     /**
      * Get updatedAt
      *
-     * @return datetime
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

@@ -14,8 +14,12 @@
 
         <field name="updatedAt" column="updated_at" type="datetime" />
 
-        <many-to-one field="user" target-entity="Manhattan\Bundle\ConsoleBundle\Entity\User">
-            <join-column name="user_id" referenced-column-name="id" />
+        <many-to-one field="createdBy" target-entity="Manhattan\Bundle\ConsoleBundle\Entity\User">
+            <join-column name="created_by" referenced-column-name="id" nullable="true" />
+        </many-to-one>
+
+        <many-to-one field="updatedBy" target-entity="Manhattan\Bundle\ConsoleBundle\Entity\User">
+            <join-column name="updated_by" referenced-column-name="id" nullable="true" />
         </many-to-one>
 
         <lifecycle-callbacks>
