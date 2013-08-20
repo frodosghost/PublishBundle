@@ -9,8 +9,8 @@ $loader->registerNamespace('Symfony', $_SERVER['SYMFONY']);
 $loader->register();
 
 spl_autoload_register(function($class) {
-    if (0 === strpos($class, 'Manhattan\\PublishBundle\\ManhattanPublishBundle')) {
-        $path = implode('/', array_slice(explode('\\', $class), 3)).'.php';
+    if (0 === strpos($class, 'Manhattan\\PublishBundle')) {
+        $path = implode('/', array_slice(explode('\\', $class), 2)).'.php';
         require_once __DIR__.'/../'.$path;
         return true;
     }
