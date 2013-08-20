@@ -20,6 +20,20 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('manhattan_publish');
 
+        $rootNode
+            ->children()
+                ->arrayNode('publish_states')
+                    ->prototype('array')->end()
+                    ->defaultValue(array(
+                        1 => 'Draft',
+                        2 => 'Publish',
+                        4 => 'Archived',
+                        8 => 'Locked'
+                    ))
+                    ->end()
+                ->end()
+            ->end();
+
         return $treeBuilder;
     }
 }

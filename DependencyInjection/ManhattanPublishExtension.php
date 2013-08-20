@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class PublishExtension extends Extension
+class ManhattanPublishExtension extends Extension
 {
     /**
      * {@inheritDoc}
@@ -21,6 +21,9 @@ class PublishExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+
+        // Publish States
+        $container->setParameter('manhattan.publish.states', $config['publish_states']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
