@@ -236,19 +236,4 @@ abstract class Publish
         );
     }
 
-    /**
-     * PrePersist
-     */
-    public function prePersist() {
-        $this->setCreatedAt(new \DateTime());
-        $this->setUpdatedAt(new \DateTime());
-    }
-
-    /**
-     * PreUpdate
-     */
-    public function preUpdate() {
-        $this->setUpdatedAt(new \DateTime());
-    }
-
 }

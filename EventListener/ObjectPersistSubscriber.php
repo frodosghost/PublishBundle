@@ -46,11 +46,13 @@ class ObjectPersistSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        // If it is a photo then we run the upload() function
         if ($entity instanceof Publish) {
             if ($this->getSecurityToken()->getUser() instanceof User) {
                 $entity->setCreatedBy($this->getSecurityToken()->getUser());
             }
+
+            $entity->setCreatedAt(new \DateTime());
+            $entity->setUpdatedAt(new \DateTime());
         }
     }
 
@@ -59,12 +61,27 @@ class ObjectPersistSubscriber implements EventSubscriber
      */
     public function preUpdate(LifecycleEventArgs $args)
     {
+        $em = $args->getEntityManager();
+        $uow = $em->getUnitOfWork();
         $entity = $args->getEntity();
 
-        // If it is a photo then we run the preUpdate() function
         if ($entity instanceof Publish) {
             if ($this->getSecurityToken()->getUser() instanceof User) {
-                $entity->setUpdatedBy($this->getSecurityToken()->getUser());
+                $user = $this->getSecurityToken()->getUser();
+                $dateTime = new \DateTime();
+
+                $oldUpdatedBy = $entity->getUpdatedBy();
+                $oldUpdatedAt = $entity->getUpdatedAt();
+                $entity->setUpdatedBy($user);
+                $entity->setUpdatedAt($dateTime);
+
+                $uow->propertyChanged($entity, 'updatedBy', $oldUpdatedBy, $user);
+                $uow->propertyChanged($entity, 'updatedAt', $oldUpdatedAt, $dateTime);
+
+                $uow->scheduleExtraUpdate($entity, array(
+                    'updatedBy' => array($oldUpdatedBy, $user),
+                    'updatedAt' => array($oldUpdatedAt, $dateTime)
+                ));
             }
         }
     }

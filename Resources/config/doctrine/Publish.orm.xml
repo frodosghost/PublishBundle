@@ -14,18 +14,26 @@
 
         <field name="updatedAt" column="updated_at" type="datetime" />
 
-        <many-to-one field="createdBy" target-entity="Manhattan\Bundle\ConsoleBundle\Entity\User">
-            <join-column name="created_by" referenced-column-name="id" nullable="true" />
-        </many-to-one>
-
         <many-to-one field="updatedBy" target-entity="Manhattan\Bundle\ConsoleBundle\Entity\User">
-            <join-column name="updated_by" referenced-column-name="id" nullable="true" />
+            <join-column name="updated_by" referenced-column-name="id" nullable="true" on-delete="SET NULL" on-update="CASCADE" />
+            <cascade>
+                <cascade-persist />
+                <cascade-merge />
+            </cascade>
         </many-to-one>
 
-        <lifecycle-callbacks>
+        <many-to-one field="createdBy" target-entity="Manhattan\Bundle\ConsoleBundle\Entity\User">
+            <join-column name="created_by" referenced-column-name="id" nullable="true" on-delete="SET NULL" on-update="CASCADE" />
+            <cascade>
+                <cascade-persist />
+                <cascade-merge />
+            </cascade>
+        </many-to-one>
+
+        <!--lifecycle-callbacks>
             <lifecycle-callback type="prePersist" method="prePersist" />
             <lifecycle-callback type="preUpdate" method="preUpdate" />
-        </lifecycle-callbacks>
+        </lifecycle-callbacks-->
 
     </mapped-superclass>
 
