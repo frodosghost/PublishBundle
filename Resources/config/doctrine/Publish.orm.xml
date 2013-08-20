@@ -4,7 +4,7 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Manhattan\PublishBundle\Model\Publish">
+    <mapped-superclass name="Manhattan\PublishBundle\Entity\Publish">
 
         <field name="publishState" column="publish_state" type="integer" />
 

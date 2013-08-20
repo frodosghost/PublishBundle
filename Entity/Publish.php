@@ -9,10 +9,10 @@
  * file that was distributed with this source code.
  */
 
-namespace Manhattan\PublishBundle\Model;
+namespace Manhattan\PublishBundle\Entity;
 
 /**
- * Manhattan\PublishBundle\Model\Publish
+ * Manhattan\PublishBundle\Entity\Publish
  *
  * This abstract class is for easy addition of the publish state field to be used with models.
  */
