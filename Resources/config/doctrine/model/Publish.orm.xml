@@ -14,6 +14,11 @@
 
         <field name="updatedAt" column="updated_at" type="datetime" />
 
+        <lifecycle-callbacks>
+            <lifecycle-callback type="prePersist" method="prePersist" />
+            <lifecycle-callback type="preUpdate" method="preUpdate" />
+        </lifecycle-callbacks>
+
     </mapped-superclass>
 
 </doctrine-mapping>

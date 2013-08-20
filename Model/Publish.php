@@ -42,6 +42,16 @@ abstract class Publish
     protected $publishDate;
 
     /**
+     * @var \DateTime
+     */
+    protected $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    protected $updatedAt;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -108,9 +118,53 @@ abstract class Publish
     }
 
     /**
+     * Set createdAt
+     *
+     * @param datetime $createdAt
+     * @return Post
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return datetime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param datetime $updatedAt
+     * @return Post
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return datetime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
      * Returns array of static values for configuring form select values
      *
-     * @return srray
+     * @return array
      */
     public function getPublishOptions()
     {
@@ -120,6 +174,21 @@ abstract class Publish
             self::ARCHIVE => 'Archive',
             self::LOCKED  => 'Locked'
         );
+    }
+
+    /**
+     * PrePersist
+     */
+    public function prePersist() {
+        $this->setCreatedAt(new \DateTime());
+        $this->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * PreUpdate
+     */
+    public function preUpdate() {
+        $this->setUpdatedAt(new \DateTime());
     }
 
 }
