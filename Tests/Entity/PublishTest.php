@@ -35,9 +35,9 @@ class PublishTest extends \PHPUnit_Framework_TestCase
     {
         $publish = $this->getMockForAbstractClass('Manhattan\PublishBundle\Entity\Publish');
 
-        $publish->setPublishDate(new \DateTime());
-
         $date = new \DateTime();
+
+        $publish->setPublishDate($date);
 
         $this->assertEquals($date->format('Y-m-d'), $publish->getDate(), '->getDate() returns the correctly formatted Publish Date.');
     }
