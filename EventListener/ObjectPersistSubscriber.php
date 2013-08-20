@@ -47,7 +47,7 @@ class ObjectPersistSubscriber implements EventSubscriber
         $entity = $args->getEntity();
 
         if ($entity instanceof Publish) {
-            if ($this->getSecurityToken()->getUser() instanceof User) {
+            if ($this->getSecurityToken() && $this->getSecurityToken()->getUser() instanceof User) {
                 $entity->setCreatedBy($this->getSecurityToken()->getUser());
             }
 
@@ -66,7 +66,7 @@ class ObjectPersistSubscriber implements EventSubscriber
         $entity = $args->getEntity();
 
         if ($entity instanceof Publish) {
-            if ($this->getSecurityToken()->getUser() instanceof User) {
+            if ($this->getSecurityToken() && $this->getSecurityToken()->getUser() instanceof User) {
                 $user = $this->getSecurityToken()->getUser();
                 $dateTime = new \DateTime();
 
