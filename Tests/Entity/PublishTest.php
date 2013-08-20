@@ -42,4 +42,18 @@ class PublishTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($date->format('Y-m-d'), $publish->getDate(), '->getDate() returns the correctly formatted Publish Date.');
     }
 
+    public function testSetPublishState()
+    {
+        $publish = $this->getMockForAbstractClass('Manhattan\PublishBundle\Entity\Publish');
+        $this->assertEquals($publish::DRAFT, $publish->getPublishState(), '->getPublishState() returns draft when object created.');
+
+        $publish->setPublishState($publish::ARCHIVE);
+        $this->assertEquals($publish::ARCHIVE, $publish->getPublishState(), '->getPublishState() returns Archive when set.');
+        $this->assertNull($publish->getPublishDate(), '->getPublishDate() returns NULL when publish state is ARCHIVE');
+
+        $publish->setPublishState($publish::PUBLISH);
+        $this->assertEquals($publish::PUBLISH, $publish->getPublishState(), '->getPublishState() returns Archive when set.');
+        $this->assertInstanceOf('\DateTime', $publish->getPublishDate(), '->getPublishDate() returns as DateTime when publish state is set.');
+    }
+
 }
