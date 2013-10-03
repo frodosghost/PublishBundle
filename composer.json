@@ -14,7 +14,7 @@
     "require": {
         "php": ">=5.3.3",
         "doctrine/common": "~2.2",
-        "manhattan/console-bundle": "dev-markdown"
+        "manhattan/console-bundle": "dev-master"
     },
     "target-dir": "Manhattan/PublishBundle",
     "autoload": {
