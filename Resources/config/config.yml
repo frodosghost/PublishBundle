@@ -1,0 +1,7 @@
+# Set Defaults for the Bundle's Configuration
+manhattan_publish:
+    publish_states:
+        - { value: 1, name: Draft }
+        - { value: 2, name: Publish }
+        - { value: 4, name: Archive }
+        - { value: 8, name: Locked }

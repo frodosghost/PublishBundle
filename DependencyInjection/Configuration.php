@@ -23,13 +23,11 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('publish_states')
-                    ->prototype('array')->end()
-                    ->defaultValue(array(
-                        1 => 'Draft',
-                        2 => 'Publish',
-                        4 => 'Archived',
-                        8 => 'Locked'
-                    ))
+                    ->prototype('array')
+                        ->children()
+                            ->scalarNode('value')->end()
+                            ->scalarNode('name')->end()
+                        ->end()
                     ->end()
                 ->end()
             ->end();
