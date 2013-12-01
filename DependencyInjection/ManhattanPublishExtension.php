@@ -48,7 +48,7 @@ class ManhattanPublishExtension extends Extension implements PrependExtensionInt
     }
 
     /**
-     * Prepend form field settings for TwigBundle
+     * Prepend extension to load in config file
      *
      * {@inheritDoc}
      */
